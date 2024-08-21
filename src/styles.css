@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body{
+    height:100vh;
+}
+.container{
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 250px 4fr;
+}
+.dashboard{
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 200px;
+}
+button{
+    padding: 5px 20px;
+    border: none;
+    background-color: transparent;
+}
+
