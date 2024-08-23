@@ -43,7 +43,7 @@ class Project{
 }
 
 export function createTask(task){
-    let newTask = new Task(task.title, task.description, task.dueDate, task.priority, task.status);
+    let newTask = new Task(task.title, task.description, task.dueDate, task.priority);
     return newTask;
 }
 

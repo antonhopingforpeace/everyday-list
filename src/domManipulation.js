@@ -15,3 +15,40 @@
 
 //I want to be able to edit all the details for each task
 //and project
+import {createNewTask} from "./dialogCreation.js";
+
+const mainPage = document.querySelector(".main");
+
+export const dashboard = () =>{
+
+    //With this i take advantage of the Task button in the dashboard. By pressing on the Task button
+    //I go to the home page in which i will add tasks.
+    const homeButton = document.getElementById("tasks");
+
+    homeButton.addEventListener("click", ()=>{
+        mainPage.innerHTML="";
+        createAddTaskButton();
+    });
+}
+
+function createAddTaskButton(){
+    
+    const addSection = document.createElement("div");
+    addSection.classList.add("grid-element");
+
+    const addButton = document.createElement("button");
+    addButton.textContent="  +  "
+    addButton.classList.add("add-button");
+
+    addSection.appendChild(addButton);
+
+    mainPage.appendChild(addSection);
+
+    //With this add button i can create new Tasks for a project
+    addButton.addEventListener("click",()=>{
+        createNewTask();
+    });
+}
+
+
+
