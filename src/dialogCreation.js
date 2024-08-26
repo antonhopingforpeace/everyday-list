@@ -1,5 +1,6 @@
 import {projects, selectedProject} from "./index.js";
 import {createProject} from "./createToDo.js"
+import {displayProjects, displayHomeTasks} from "./domViewTasksProjects.js"
 
 export function createNewTask(){
     const taskDialog = document.querySelector(".task-dialog");
@@ -39,11 +40,12 @@ export function createNewTask(){
             };
             projects[selectedProject].addTask(newTask);
             
-            // form.reset();
+            form.reset();
             taskDialog.close();
             
-            //Testing to see if it works
-            projects[0].printTasks();
+            //When the dialogs confirm button is pressed i want to view all the tasks
+            // plus the new one
+            displayHomeTasks();
         }
         
     });
@@ -72,11 +74,12 @@ export function createNewProject(){
         
         projects.push(createProject(projectTitle, projectDescription));
         
-        // form.reset();
+        form.reset();
         taskDialog.close();
-        
-        //Testing to see if it works
-        console.log(projects);
+
+        //When the dialogs confirm button is pressed i want to view all the projects
+        // plus the new one
+        displayProjects();
         }
         
     });

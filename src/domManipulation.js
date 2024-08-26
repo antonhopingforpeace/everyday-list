@@ -7,7 +7,7 @@
 // when i go to the projects i will see all the current
 //projects, there will be a plus button to add new projects. CHECK
 
-// Create the projects DOM in order to visualize them, each time a new DOM element is created i will add a dataset so i now its place.
+// Create the projects DOM in order to visualize them, each time a new DOM element is created i will add a dataset so i now its place. CHECK
 
 //once i create a new project i will go in it and 
 // there i can add new tasks.
@@ -19,6 +19,8 @@
 //I want to be able to edit all the details for each task
 //and project
 import {createNewTask, createNewProject} from "./dialogCreation.js";
+import {displayHomeTasks, displayProjects} from "./domViewTasksProjects.js";
+
 
 const mainPage = document.querySelector(".main");
 
@@ -33,8 +35,9 @@ export const dashboard = () =>{
     const projectButton = document.getElementById("projects");
 
     homeButton.addEventListener("click", ()=>{
-        mainPage.innerHTML="";
-        createAddButton("task");
+        // mainPage.innerHTML="";
+        // createAddButton("task");
+        displayHomeTasks();
 
         //Style the  tasks button when it is pressed 
         homeButton.style.backgroundColor="red";
@@ -42,8 +45,9 @@ export const dashboard = () =>{
     });
     
     projectButton.addEventListener("click", () =>{
-        mainPage.innerHTML="";
-        createAddButton("project");
+        // mainPage.innerHTML="";
+        // createAddButton("project");
+        displayProjects();
 
         //Style the  projects button when it is pressed 
         homeButton.style.backgroundColor="white";
@@ -53,7 +57,7 @@ export const dashboard = () =>{
 
 }
 
-function createAddButton(kindOfAddButton){
+export function createAddButton(kindOfAddButton){
     
     const addSection = document.createElement("div");
     addSection.classList.add("grid-element");
