@@ -1,22 +1,22 @@
 import "./styles.css";
-import {deleteProject,createProject} from "./createToDo.js"
+import {createProject} from "./createToDo.js"
 import {createFirstProject} from "./initialPageTasks.js";
 import {dashboard} from "./domManipulation.js";
 export const projects = [];
-export let selectedProject = 0;
+export const selectedProject = [];
+
+selectedProject[0] = 0;
 
 dashboard();
 
 createFirstProject();
-
-// deleteProject(projects,0);
 
 console.log(projects);
 
 projects.push(createProject("Second","Testing project to see if the second works"));
 
 let sampleTask = {
-    title:"Drive a car",
+    title:"Drive aaaaaaaaaaaaa car",
     description:"Trying to get my drivers license so i need to practice a lot before my exam",
     dueDate:"12/11/2024",
     priority:"High",

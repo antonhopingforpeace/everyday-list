@@ -10,17 +10,17 @@
 // Create the projects DOM in order to visualize them, each time a new DOM element is created i will add a dataset so i now its place. CHECK
 
 //once i create a new project i will go in it and 
-// there i can add new tasks.
+// there i can add new tasks. CHECK
 
-//each task will have a delete button and by pressing a 
+//each task will have a delete button and by pressing a //CHECK
 // task it will expand. The same thing goes for the 
 // projects button.
 
 //I want to be able to edit all the details for each task
 //and project
 import {createNewTask, createNewProject} from "./dialogCreation.js";
-import {displayHomeTasks, displayProjects} from "./domViewTasksProjects.js";
-
+import {displayTasks, displayProjects} from "./domViewTasksProjects.js";
+import {selectedProject} from "./index.js";
 
 const mainPage = document.querySelector(".main");
 
@@ -37,11 +37,12 @@ export const dashboard = () =>{
     homeButton.addEventListener("click", ()=>{
         // mainPage.innerHTML="";
         // createAddButton("task");
-        displayHomeTasks();
+        displayTasks(0);
 
         //Style the  tasks button when it is pressed 
         homeButton.style.backgroundColor="red";
         projectButton.style.backgroundColor="white"
+        selectedProject[0] = 0;
     });
     
     projectButton.addEventListener("click", () =>{

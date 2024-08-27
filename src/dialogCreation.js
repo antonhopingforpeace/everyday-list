@@ -1,6 +1,6 @@
 import {projects, selectedProject} from "./index.js";
 import {createProject} from "./createToDo.js"
-import {displayProjects, displayHomeTasks} from "./domViewTasksProjects.js"
+import {displayProjects, displayTasks} from "./domViewTasksProjects.js"
 
 export function createNewTask(){
     const taskDialog = document.querySelector(".task-dialog");
@@ -45,7 +45,7 @@ export function createNewTask(){
             
             //When the dialogs confirm button is pressed i want to view all the tasks
             // plus the new one
-            displayHomeTasks();
+            displayTasks(selectedProject);
         }
         
     });
