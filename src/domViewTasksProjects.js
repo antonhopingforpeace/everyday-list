@@ -1,5 +1,6 @@
 import {projects, selectedProject} from "./index.js";
 import { createAddButton } from "./domManipulation.js";
+import { editTask } from "./dialogCreation.js";
 
 const mainPage = document.querySelector(".main");
 
@@ -27,10 +28,10 @@ export function displayProjects(){
 
         let projectDescription = document.createElement("p");
         projectDescription.textContent = projects[i].description;
-        placementOfProject.appendChild(projectDescription);
 
+        //Delete a project
         let deleteButton = document.createElement("button");
-        deleteButton.classList.add("deleteProject");
+        deleteButton.classList.add("delete-project");
         deleteButton.textContent = " X "
         deleteButton.addEventListener("click",(element) =>{
             element.target.parentElement.remove();
@@ -38,27 +39,48 @@ export function displayProjects(){
             mainPage.innerHTML = "";
             createAddButton("project");
             displayProjects();
-            placementOfProject.removeEventListener("click",goToInnerProject);
         });
 
-        placementOfProject.appendChild(deleteButton);
+        //Display the details of a project
+        let detailsButton = document.createElement("button");
+        detailsButton.classList.add("project-details");
+        detailsButton.textContent = "MORE";
+        detailsButton.addEventListener("click",(element)=>{
+            if(detailsButton.textContent=="MORE"){
+                placementOfProject.appendChild(projectDescription);
+                placementOfProject.appendChild(deleteButton);
+            }
+            else{
+                placementOfProject.removeChild(projectDescription);
+                placementOfProject.removeChild(deleteButton);
+            }
+            detailsButton.textContent = detailsButton.textContent=="MORE" ? detailsButton.textContent="LESS" : detailsButton.textContent="MORE";
+        });
+
+        
+        // placementOfProject.appendChild(deleteButton);
+        placementOfProject.appendChild(detailsButton);
         mainPage.appendChild(placementOfProject);
 
         //Create an event listener in order to access the inner content of a project
         //Do this by adding a index so i know to which project i will be going in and accessing and assessing
         
-        placementOfProject.addEventListener("click",()=>{
+        projectTitle.addEventListener("click",()=>{
             selectedProject[0]=i;
         });
 
-        placementOfProject.addEventListener("click",goToInnerProject);
+        projectTitle.addEventListener("click",goToInnerProject);
     }
 }
 
 //Use it in the event listener when a project is pressed
 function goToInnerProject(){
-    console.log(selectedProject[0])
     viewInnerTasksOfProject(selectedProject[0]);
+}
+
+//View the inner tasks of a project, it will be called when a project is pressed
+function viewInnerTasksOfProject(index){
+    displayTasks(index);
 }
 
 //With this function i will display all the tasks in the tasks screen or the projects inner screen
@@ -81,7 +103,6 @@ export function displayTasks(index){
 
         let taskDescription = document.createElement("p");
         taskDescription.textContent = projects[index].tasks[i].description;
-        placementOfTask.appendChild(taskDescription);
 
         let taskDueDate = document.createElement("p");
         taskDueDate.textContent = projects[index].tasks[i].dueDate;
@@ -89,34 +110,78 @@ export function displayTasks(index){
 
         let taskPriority = document.createElement("h3");
         taskPriority.textContent = projects[index].tasks[i].priority;
-        placementOfTask.appendChild(taskPriority);
+        if(taskPriority.textContent=="Low"){
+            placementOfTask.style.backgroundColor = "green";
+        }
+        else if(taskPriority.textContent=="Medium"){
+            placementOfTask.style.backgroundColor = "yellow";
+        }
+        else if(taskPriority.textContent=="High"){
+            placementOfTask.style.backgroundColor = "orange";
+        }
 
+        //delete a task
         let deleteButton = document.createElement("button");
-        deleteButton.classList.add("deleteTask");
+        deleteButton.classList.add("delete-task");
         deleteButton.textContent = " X "
         deleteButton.addEventListener("click",(element) =>{
             element.target.parentElement.remove();
             projects[index].removeTask(i);
-            mainPage.innerHTML = "";
-            createAddButton("task");
             displayTasks(index);
         });
 
+        //View more details in each task
+        let detailsButton = document.createElement("button");
+        detailsButton.classList.add("task-details");
+        detailsButton.textContent = "MORE";
+        detailsButton.addEventListener("click",()=>{
+            if(detailsButton.textContent=="MORE"){
+                placementOfTask.appendChild(taskDescription);
+                placementOfTask.appendChild(deleteButton);
+                placementOfTask.appendChild(statusButton);
+                placementOfTask.appendChild(taskPriority);
+                placementOfTask.appendChild(editButton);
+            }
+            else{
+                placementOfTask.removeChild(taskDescription);
+                placementOfTask.removeChild(deleteButton);
+                placementOfTask.removeChild(statusButton);
+                placementOfTask.removeChild(taskPriority);
+                placementOfTask.removeChild(editButton);
+            }
+            detailsButton.textContent = detailsButton.textContent=="MORE" ? detailsButton.textContent="LESS" : detailsButton.textContent="MORE";
+        });
+
+        //Pressing on the edit button, a new dialog is created where i can edit the task
+        let editButton = document.createElement("button");
+        editButton.classList.add("edit-task");
+        editButton.textContent = "Edit";
+        editButton.addEventListener("click",()=>{
+            const currentDetails = {
+                title: taskTitle.textContent,
+                description: taskDescription.textContent,
+                DueDate: taskDueDate.textContent,
+                priority: taskPriority.textContent,
+            };
+            
+            //Activate this function, input are the details of the task and its placement in the project
+            editTask(currentDetails,i);
+
+            displayTasks(index);
+        })
+
+        //change the status of a task
         let statusButton = document.createElement("button");
         statusButton.classList.add("completeTask");
         statusButton.textContent = projects[index].tasks[i].status;
         statusButton.addEventListener("click",()=>{
             projects[index].tasks[i].changeStatus();
             statusButton.textContent = projects[index].tasks[i].status;
-        })
+        });
 
-        placementOfTask.appendChild(statusButton);
-        placementOfTask.appendChild(deleteButton);
+        // placementOfTask.appendChild(statusButton);
+        placementOfTask.appendChild(detailsButton);
         mainPage.appendChild(placementOfTask);
     }
 }
 
-//View the inner tasks of a project, it will be called when a project is pressed
-function viewInnerTasksOfProject(index){
-    displayTasks(index);
-}

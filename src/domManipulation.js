@@ -12,9 +12,9 @@
 //once i create a new project i will go in it and 
 // there i can add new tasks. CHECK
 
-//each task will have a delete button and by pressing a //CHECK
-// task it will expand. The same thing goes for the 
-// projects button.
+//each task will have a delete button and by pressing a CHECK
+// task it will expand. The same thing goes for the CHECK
+// projects button. CHECK
 
 //I want to be able to edit all the details for each task
 //and project
@@ -33,6 +33,12 @@ export const dashboard = () =>{
     //I will take advantage of the Projects button in the dashboard. By pressing on it, i go to a page where all the projects will 
     //be visible and there will be a add project button
     const projectButton = document.getElementById("projects");
+
+    //Initialize the webpage with the first page, containing the general tasks
+    displayTasks(0);
+    homeButton.style.backgroundColor="red";
+    projectButton.style.backgroundColor="white"
+
 
     homeButton.addEventListener("click", ()=>{
         // mainPage.innerHTML="";

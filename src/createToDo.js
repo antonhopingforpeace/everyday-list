@@ -40,6 +40,13 @@ class Project{
         let newTask = createTask(task);
         this.tasks.push(newTask);
     }
+
+    //edit a task in a project
+    editTask(task,i){
+        let newTask = createTask(task);
+        this.tasks.splice(i,0,newTask)
+        this.tasks.splice(i+1,1);       
+    }
 }
 
 export function createTask(task){

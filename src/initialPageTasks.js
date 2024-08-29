@@ -9,11 +9,11 @@ export function createFirstProject(){
     projects.push(createProject("Tasks", "THe home page, where everything is written in general."));
 
     //Add testing tasks to the first project
-    tests.forEach((element) =>{
-        projects[0].addTask(element);
-    });
+    // tests.forEach((element) =>{
+    //     projects[0].addTask(element);
+    // });
 
-    projects[0].printTasks();
+    // projects[0].printTasks();
 
 }
 

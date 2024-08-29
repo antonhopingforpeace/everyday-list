@@ -7,9 +7,11 @@ export const selectedProject = [];
 
 selectedProject[0] = 0;
 
-dashboard();
-
+//Create the first project, which will contain either nothing either the testing Tasks, in order to 
+//Work on the dashboard
 createFirstProject();
+
+dashboard();
 
 console.log(projects);
 
@@ -24,11 +26,3 @@ let sampleTask = {
 };
 
 projects[1].addTask(sampleTask);
-projects[1].printTasks();
-
-
-projects[1].tasks[0].changeStatus();
-projects[1].printTasks();
-
-projects[1].tasks[0].changeStatus();
-projects[1].printTasks();
