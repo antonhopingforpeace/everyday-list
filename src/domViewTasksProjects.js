@@ -3,6 +3,9 @@ import { createAddButton } from "./domManipulation.js";
 import { editTask } from "./dialogCreation.js";
 
 const mainPage = document.querySelector(".main");
+const headerOfPage = document.getElementById("header");
+const titleOfHeader = document.createElement("h1");
+headerOfPage.appendChild(titleOfHeader);
 
 //With this function i will display all the projects in the projects screen
 export function displayProjects(){
@@ -11,6 +14,9 @@ export function displayProjects(){
     //And add the create new project button
     mainPage.innerHTML="";
     createAddButton("project");
+
+    //Title for place where al projects are
+    titleOfHeader.textContent = "PROJECTS";
 
     //for each project EXCEPT the first one, which is the starter page
     //i want to create a project div in which i will contain the following
@@ -90,6 +96,9 @@ export function displayTasks(index){
     //And add the create new task button
     mainPage.innerHTML="";
     createAddButton("task");
+
+    //Add title to the page
+    titleOfHeader.textContent = projects[index].title;
 
     //display all the tasks in this for loop for the project
     for(let i=0;i<projects[index].tasks.length;i++){

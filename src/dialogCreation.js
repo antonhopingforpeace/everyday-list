@@ -16,19 +16,22 @@ export function createNewTask(){
     });
 
     confirmTaskDialog.addEventListener("click", (event)=>{
-        if(flag){
+
+        const form = document.querySelector(".task-form-container form");
+        const taskTitle = document.querySelector(".task-form-container #title").value;
+        const taskDescription = document.querySelector(".task-form-container #description").value;
+        const taskDueDate = document.querySelector(".task-form-container #dueDate").value;
+        let taskPriority = document.getElementsByName("priority");
+        let selected;
+        for(let i=0;i<taskPriority.length;i++){
+            if(taskPriority[i].checked)
+                selected = taskPriority[i].value;
+        }
+
+        //Check if the inputs are empty as well
+        if(flag && taskTitle!="" && taskDescription!="" && taskDueDate!=""){
             flag=false;
             event.preventDefault();
-            const form = document.querySelector(".task-form-container form");
-            const taskTitle = document.querySelector(".task-form-container #title").value;
-            const taskDescription = document.querySelector(".task-form-container #description").value;
-            const taskDueDate = document.querySelector(".task-form-container #dueDate").value;
-            let taskPriority = document.getElementsByName("priority");
-            let selected;
-            for(let i=0;i<taskPriority.length;i++){
-                if(taskPriority[i].checked)
-                  selected = taskPriority[i].value;
-            }
             
             //I must find a way to see in which project this new task will be added. 
             //This will be done initially by using a global variable called selectedProject which will change depending on the project that is selected.
@@ -84,19 +87,22 @@ export function editTask(currentTask,i){
     });
 
     confirmTaskDialog.addEventListener("click", (event)=>{
-        if(flag){
+
+        const form = document.querySelector(".task-form-container form");
+        const taskTitle = document.querySelector(".task-form-container #title").value;
+        const taskDescription = document.querySelector(".task-form-container #description").value;
+        const taskDueDate = document.querySelector(".task-form-container #dueDate").value;
+        let taskPriority = document.getElementsByName("priority");
+        let selected;
+        for(let i=0;i<taskPriority.length;i++){
+            if(taskPriority[i].checked)
+            selected = taskPriority[i].value;
+        }
+
+        //Check if the inputs are empty as well
+        if(flag && taskTitle!="" && taskDescription!="" && taskDueDate!="" && selected!=""){
             flag=false;
             event.preventDefault();
-            const form = document.querySelector(".task-form-container form");
-            const taskTitle = document.querySelector(".task-form-container #title").value;
-            const taskDescription = document.querySelector(".task-form-container #description").value;
-            const taskDueDate = document.querySelector(".task-form-container #dueDate").value;
-            let taskPriority = document.getElementsByName("priority");
-            let selected;
-            for(let i=0;i<taskPriority.length;i++){
-                if(taskPriority[i].checked)
-                  selected = taskPriority[i].value;
-            }
             
             //I must find a way to see in which project this new task will be added. 
             //This will be done initially by using a global variable called selectedProject which will change depending on the project that is selected.
@@ -134,21 +140,24 @@ export function createNewProject(){
     });
 
     confirmTaskDialog.addEventListener("click", (event)=>{
-        if(flag){
-        flag=false;
-        event.preventDefault();
+
         const form = document.querySelector(".project-form-container form");
         const projectTitle = document.querySelector(".project-form-container #title").value;
         const projectDescription = document.querySelector(".project-form-container #description").value;
-        
-        projects.push(createProject(projectTitle, projectDescription));
-        
-        form.reset();
-        taskDialog.close();
 
-        //When the dialogs confirm button is pressed i want to view all the projects
-        // plus the new one
-        displayProjects();
+        //Check if the inputs are empty as well
+        if(flag && projectTitle!="" && projectDescription!=""){
+            flag=false;
+            event.preventDefault();
+            
+            projects.push(createProject(projectTitle, projectDescription));
+            
+            form.reset();
+            taskDialog.close();
+
+            //When the dialogs confirm button is pressed i want to view all the projects
+            // plus the new one
+            displayProjects();
         }
         
     });
