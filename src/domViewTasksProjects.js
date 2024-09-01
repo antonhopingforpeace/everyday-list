@@ -4,8 +4,17 @@ import { editTask } from "./dialogCreation.js";
 
 const mainPage = document.querySelector(".main");
 const headerOfPage = document.getElementById("header");
+const headerDiv =document.createElement("div");
+headerDiv.classList.add("header-div");
+
 const titleOfHeader = document.createElement("h1");
-headerOfPage.appendChild(titleOfHeader);
+titleOfHeader.classList.add("header-title");
+const backButton = document.createElement("button");
+
+headerDiv.appendChild(backButton);
+headerDiv.appendChild(titleOfHeader);
+headerOfPage.appendChild(headerDiv);
+let flagOpener = false;
 
 //With this function i will display all the projects in the projects screen
 export function displayProjects(){
@@ -30,10 +39,12 @@ export function displayProjects(){
         
         let projectTitle = document.createElement("h2");
         projectTitle.textContent = projects[i].title;
+        projectTitle.classList.add("project-header");
         placementOfProject.appendChild(projectTitle);
 
         let projectDescription = document.createElement("p");
         projectDescription.textContent = projects[i].description;
+        projectDescription.classList.add("descriptionProject");
 
         //Delete a project
         let deleteButton = document.createElement("button");
@@ -50,20 +61,25 @@ export function displayProjects(){
         //Display the details of a project
         let detailsButton = document.createElement("button");
         detailsButton.classList.add("project-details");
-        detailsButton.textContent = "MORE";
+        detailsButton.textContent = "▼";
         detailsButton.addEventListener("click",(element)=>{
-            if(detailsButton.textContent=="MORE"){
+            if(detailsButton.textContent=="▼"){
+                placementOfProject.removeChild(detailsButton);
                 placementOfProject.appendChild(projectDescription);
-                placementOfProject.appendChild(deleteButton);
+                placementOfProject.appendChild(section);
+                placementOfProject.appendChild(detailsButton);
             }
             else{
                 placementOfProject.removeChild(projectDescription);
-                placementOfProject.removeChild(deleteButton);
+                placementOfProject.removeChild(section);
             }
-            detailsButton.textContent = detailsButton.textContent=="MORE" ? detailsButton.textContent="LESS" : detailsButton.textContent="MORE";
+            detailsButton.textContent = detailsButton.textContent=="▼" ? detailsButton.textContent="▲" : detailsButton.textContent="▼";
         });
 
-        
+        let section = document.createElement("div");
+        section.classList.add("middle-buttons");
+        section.appendChild(deleteButton);
+
         // placementOfProject.appendChild(deleteButton);
         placementOfProject.appendChild(detailsButton);
         mainPage.appendChild(placementOfProject);
@@ -100,6 +116,27 @@ export function displayTasks(index){
     //Add title to the page
     titleOfHeader.textContent = projects[index].title;
 
+    if(index!=0){
+        flagOpener = true;
+
+        backButton.classList.add("header-back");
+        backButton.textContent = "«««";
+        backButton.addEventListener("click",()=>{
+            displayProjects();
+            backButton.classList.remove("header-back");
+            backButton.textContent = "";
+        });
+    }
+    else{
+        if(flagOpener){
+            backButton.classList.remove("header-back");
+            backButton.textContent = "";
+            flagOpener=false;
+        }
+        
+    }
+    
+
     //display all the tasks in this for loop for the project
     for(let i=0;i<projects[index].tasks.length;i++){
         
@@ -108,57 +145,65 @@ export function displayTasks(index){
         
         let taskTitle = document.createElement("h2");
         taskTitle.textContent = projects[index].tasks[i].title;
-        placementOfTask.appendChild(taskTitle);
+        // placementOfTask.appendChild(taskTitle);
 
         let taskDescription = document.createElement("p");
+        taskDescription.classList.add("descriptionTask");
         taskDescription.textContent = projects[index].tasks[i].description;
 
         let taskDueDate = document.createElement("p");
         taskDueDate.textContent = projects[index].tasks[i].dueDate;
-        placementOfTask.appendChild(taskDueDate);
+        // placementOfTask.appendChild(taskDueDate);
 
         let taskPriority = document.createElement("h3");
         taskPriority.textContent = projects[index].tasks[i].priority;
         if(taskPriority.textContent=="Low"){
-            placementOfTask.style.backgroundColor = "green";
+            placementOfTask.style.border = "3px solid lime";
+            placementOfTask.style.backgroundColor = "rgb(163, 270, 180)";
         }
         else if(taskPriority.textContent=="Medium"){
-            placementOfTask.style.backgroundColor = "yellow";
+            placementOfTask.style.border = "3px solid yellow";
+            placementOfTask.style.backgroundColor = "rgb(240, 240, 203)";
         }
         else if(taskPriority.textContent=="High"){
-            placementOfTask.style.backgroundColor = "orange";
+            placementOfTask.style.border = "3px solid red";
+            placementOfTask.style.backgroundColor = "rgb(243, 187, 187)";
         }
 
         //delete a task
         let deleteButton = document.createElement("button");
         deleteButton.classList.add("delete-task");
-        deleteButton.textContent = " X "
+        deleteButton.textContent = "DELETE"
         deleteButton.addEventListener("click",(element) =>{
             element.target.parentElement.remove();
             projects[index].removeTask(i);
             displayTasks(index);
         });
 
+        
+
         //View more details in each task
         let detailsButton = document.createElement("button");
         detailsButton.classList.add("task-details");
-        detailsButton.textContent = "MORE";
+        detailsButton.textContent = "▼";
+        // detailsButton.textContent="MORE"
         detailsButton.addEventListener("click",()=>{
-            if(detailsButton.textContent=="MORE"){
+            
+            if(detailsButton.textContent=="▼"){
+                placementOfTask.removeChild(footer);
                 placementOfTask.appendChild(taskDescription);
-                placementOfTask.appendChild(deleteButton);
-                placementOfTask.appendChild(statusButton);
-                placementOfTask.appendChild(taskPriority);
-                placementOfTask.appendChild(editButton);
+                placementOfTask.appendChild(section);
+                // placementOfTask.appendChild(deleteButton);
+                // placementOfTask.appendChild(editButton);
+                placementOfTask.appendChild(footer);
             }
             else{
                 placementOfTask.removeChild(taskDescription);
-                placementOfTask.removeChild(deleteButton);
-                placementOfTask.removeChild(statusButton);
-                placementOfTask.removeChild(taskPriority);
-                placementOfTask.removeChild(editButton);
+                placementOfTask.removeChild(section);
+                // placementOfTask.removeChild(deleteButton);
+                // placementOfTask.removeChild(editButton);
             }
-            detailsButton.textContent = detailsButton.textContent=="MORE" ? detailsButton.textContent="LESS" : detailsButton.textContent="MORE";
+            detailsButton.textContent = detailsButton.textContent=="▼" ? detailsButton.textContent="▲" : detailsButton.textContent="▼";
         });
 
         //Pressing on the edit button, a new dialog is created where i can edit the task
@@ -179,17 +224,37 @@ export function displayTasks(index){
             displayTasks(index);
         })
 
+        let section = document.createElement("div");
+        section.classList.add("middle-buttons");
+        section.appendChild(deleteButton);
+        section.appendChild(editButton);
+
         //change the status of a task
         let statusButton = document.createElement("button");
-        statusButton.classList.add("completeTask");
-        statusButton.textContent = projects[index].tasks[i].status;
+        statusButton.classList.add("complete-task");
+        statusButton.textContent = "";
+        projects[index].tasks[i].status=="incomplete"?statusButton.style.backgroundColor="white":statusButton.style.backgroundColor="black";;
         statusButton.addEventListener("click",()=>{
             projects[index].tasks[i].changeStatus();
-            statusButton.textContent = projects[index].tasks[i].status;
+            projects[index].tasks[i].status=="incomplete"?statusButton.style.backgroundColor="white":statusButton.style.backgroundColor="black";;
         });
 
+        //create a footer for the task where the date and details button will be
+        let footer = document.createElement("div");
+        footer.classList.add("task-footer");
+        footer.appendChild(taskDueDate);
+        footer.appendChild(detailsButton);
+
+        //create a header for the task where the title and the completed sign will be
+        let header = document.createElement("div");
+        header.classList.add("task-header");
+        header.appendChild(statusButton);
+        header.appendChild(taskTitle);
+ 
+
         // placementOfTask.appendChild(statusButton);
-        placementOfTask.appendChild(detailsButton);
+        placementOfTask.appendChild(header);
+        placementOfTask.appendChild(footer);
         mainPage.appendChild(placementOfTask);
     }
 }

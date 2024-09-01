@@ -9,9 +9,9 @@ export function createFirstProject(){
     projects.push(createProject("GENERAL TASKS", ""));
 
     //Add testing tasks to the first project
-    // tests.forEach((element) =>{
-    //     projects[0].addTask(element);
-    // });
+    tests.forEach((element) =>{
+        projects[0].addTask(element);
+    });
 
     // projects[0].printTasks();
 

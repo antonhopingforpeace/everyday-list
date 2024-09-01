@@ -1,23 +1,3 @@
-//add ways in order to interact with the tasks and projects button. CHECK
-
-//when going to the tasks i will see the general tasks.
-//and there will be a plus sign button somewhere in order
-//to add new notes. CHECK 
-
-// when i go to the projects i will see all the current
-//projects, there will be a plus button to add new projects. CHECK
-
-// Create the projects DOM in order to visualize them, each time a new DOM element is created i will add a dataset so i now its place. CHECK
-
-//once i create a new project i will go in it and 
-// there i can add new tasks. CHECK
-
-//each task will have a delete button and by pressing a CHECK
-// task it will expand. The same thing goes for the CHECK
-// projects button. CHECK
-
-//I want to be able to edit all the details for each task
-//and project
 import {createNewTask, createNewProject} from "./dialogCreation.js";
 import {displayTasks, displayProjects} from "./domViewTasksProjects.js";
 import {selectedProject} from "./index.js";
