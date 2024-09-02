@@ -16,7 +16,7 @@ export const tests = [
     {
         title:"Gain 10 kg",
         description:"Have to achieve a 140kg bench press",
-        dueDate:"22/09/2024",
+        dueDate:"12/22/2024",
         priority:"Medium",
         status: "Incomplete"
     },

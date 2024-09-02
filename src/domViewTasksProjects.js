@@ -1,6 +1,7 @@
 import {projects, selectedProject} from "./index.js";
 import { createAddButton } from "./domManipulation.js";
 import { editTask } from "./dialogCreation.js";
+import {format,parseISO} from 'date-fns';
 
 const mainPage = document.querySelector(".main");
 const headerOfPage = document.getElementById("header");
@@ -36,6 +37,7 @@ export function displayProjects(){
         
         let placementOfProject = document.createElement("div");
         placementOfProject.classList.add("grid-element");
+        placementOfProject.classList.add("longer-grid-element");
         
         let projectTitle = document.createElement("h2");
         projectTitle.textContent = projects[i].title;
@@ -152,7 +154,9 @@ export function displayTasks(index){
         taskDescription.textContent = projects[index].tasks[i].description;
 
         let taskDueDate = document.createElement("p");
+        taskDueDate.style.fontSize = "1.8vh";
         taskDueDate.textContent = projects[index].tasks[i].dueDate;
+        taskDueDate.textContent = format(new Date(taskDueDate.textContent),'MMMM do yyyy')
         // placementOfTask.appendChild(taskDueDate);
 
         let taskPriority = document.createElement("h3");
@@ -214,7 +218,7 @@ export function displayTasks(index){
             const currentDetails = {
                 title: taskTitle.textContent,
                 description: taskDescription.textContent,
-                DueDate: taskDueDate.textContent,
+                dueDate: format(new Date(projects[index].tasks[i].dueDate),'yyyy-MM-dd'),
                 priority: taskPriority.textContent,
             };
             

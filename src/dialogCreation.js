@@ -1,6 +1,7 @@
 import {projects, selectedProject} from "./index.js";
 import {createProject} from "./createToDo.js"
 import {displayProjects, displayTasks} from "./domViewTasksProjects.js"
+import {format,parseISO} from 'date-fns';
 
 export function createNewTask(){
     const taskDialog = document.querySelector(".task-dialog");
@@ -71,7 +72,8 @@ export function editTask(currentTask,i){
     //place in the dialog the previous values of the task before editing
     taskTitle.value = currentTask.title;
     taskDescription.value = currentTask.description;
-    taskDueDate.value = currentTask.dueDate;
+    taskDueDate.value = format(new Date(currentTask.dueDate),'yyyy-MM-dd');
+    // console.log(format(new Date(currentTask.dueDate),'yyyy/MM/dd'));
 
     for (let i = 0; i < taskPriority.length; i++) {
         

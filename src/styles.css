@@ -126,29 +126,18 @@ input:invalid{
     grid-template-columns: 250px 4fr;
     grid-template-rows: 80px 1fr;
 }
-.dashboard{
-    grid-column: 1/2;
-    grid-row: 1/3;
-    display: flex;
-    flex-direction: column;
-    gap:50px;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 200px;
-    border-right: 1px solid black;
-}
+
 button{
     padding: 5px 20px;
     border: none;
     background-color: transparent;
 }
 #header{
-    margin-top: 10px;
+    background-color: red;
+    opacity: 0.9;
+    border-bottom: 1px solid black;
+    padding-top: 10px;
     grid-column: 2/3;
-    grid-row: 1/2;
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: center; */
     text-align: center;
     font-size: x-large;
 }
@@ -170,26 +159,31 @@ button{
     color: lightskyblue;
 }
 .main{
+    background-image: url('./Material-Wood-Scandinavian-House-Oak-1.jpg');
+    opacity: 1;
     grid-column: 2/3;
     grid-row: 2/3;
     padding: 50px;
     /* border: 1px solid black; */
     display: grid;
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows: repeat(5,1fr);
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    grid-template-rows: repeat(4,minmax(100px,1fr));
     grid-auto-rows: 1fr;
     gap: 10px;
 }
 
 .grid-element{
     padding: 10px 5px;
-    border: 1px solid black;
+    border: 3px solid black;
     border-radius: 20px;
     display: flex;
     justify-content:space-between;
     text-align: center;
     flex-direction: column;
     gap:10px;
+}
+.longer-grid-element{
+    grid-column: span 2;
 }
 .task-footer{
     padding: 0 5px;
@@ -204,9 +198,11 @@ button{
     word-break: break-word; 
     display: flex;
     font-size: large;
+    gap: 20px;
     justify-content: space-around;
     align-items: center;
 }
+
 .middle-buttons{
     width: 100%;
     display: flex;
@@ -251,13 +247,13 @@ button{
     cursor: pointer;
 }
 .project-header{
-    font-size: xx-large;
+    margin-top:50px;
+    font-size:6vh;
     flex:1;
     cursor:pointer;
 }
 .project-header:hover{
     color:lightskyblue;
-    font-size: xx-large;
 }
 .project-details{
     padding-right:  0;
@@ -296,11 +292,31 @@ button{
 
 /* testing */
 #tasks:hover{
-    font-size:large;
+    font-size:xx-large;
     font-weight:bold;
 }
 
 #projects:hover{
-    font-size:large;
+    font-size:xx-large;
     font-weight:bold;
+}
+
+#projects, #tasks{
+    padding: 30px 0;
+    font-size:x-large;
+    font-weight:bold;
+    opacity: 0.7;
+}
+
+.dashboard{
+    background-image: url('./wood-2045379_640.jpg');
+    grid-column: 1/2;
+    grid-row: 1/3;
+    display: flex;
+    flex-direction: column;
+    gap:100px;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding-top: 200px;
+    border-right: 4px double black;
 }
