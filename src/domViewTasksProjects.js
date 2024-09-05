@@ -1,7 +1,7 @@
 import {projects, selectedProject} from "./index.js";
 import { createAddButton } from "./domManipulation.js";
 import { editTask } from "./dialogCreation.js";
-import {format,parseISO} from 'date-fns';
+import {format} from 'date-fns';
 
 const mainPage = document.querySelector(".main");
 const headerOfPage = document.getElementById("header");
@@ -11,6 +11,7 @@ headerDiv.classList.add("header-div");
 const titleOfHeader = document.createElement("h1");
 titleOfHeader.classList.add("header-title");
 const backButton = document.createElement("button");
+backButton.classList.add("header-back");
 
 headerDiv.appendChild(backButton);
 headerDiv.appendChild(titleOfHeader);
@@ -19,6 +20,9 @@ let flagOpener = false;
 
 //With this function i will display all the projects in the projects screen
 export function displayProjects(){
+
+    //Make the back button disappear when the button for projects is pressed 
+    backButton.textContent = "";
 
     //each time the function is activated i want to delete the contents of main
     //And add the create new project button
@@ -121,17 +125,14 @@ export function displayTasks(index){
     if(index!=0){
         flagOpener = true;
 
-        backButton.classList.add("header-back");
         backButton.textContent = "«««";
         backButton.addEventListener("click",()=>{
             displayProjects();
-            backButton.classList.remove("header-back");
             backButton.textContent = "";
         });
     }
     else{
         if(flagOpener){
-            backButton.classList.remove("header-back");
             backButton.textContent = "";
             flagOpener=false;
         }

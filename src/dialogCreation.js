@@ -1,7 +1,8 @@
 import {projects, selectedProject} from "./index.js";
 import {createProject} from "./createToDo.js"
 import {displayProjects, displayTasks} from "./domViewTasksProjects.js"
-import {format,parseISO} from 'date-fns';
+import {format} from 'date-fns';
+import {storeInLocalStorage} from './local-storage-functionality.js';
 
 export function createNewTask(){
     const taskDialog = document.querySelector(".task-dialog");
@@ -10,7 +11,7 @@ export function createNewTask(){
     
     taskDialog.showModal();
     let flag=true;
-
+    
 
     closeTaskDialog.addEventListener("click", ()=>{
         taskDialog.close();
@@ -43,6 +44,9 @@ export function createNewTask(){
                 priority: selected,
             };
             projects[selectedProject].addTask(newTask);
+
+            //Store the project modifications in local storage
+            storeInLocalStorage();
             
             form.reset();
             taskDialog.close();
@@ -117,6 +121,9 @@ export function editTask(currentTask,i){
 
             //place in specific project and the specific task the new details
             projects[selectedProject].editTask(newTask,i);
+
+            //Store the project modifications in local storage
+            storeInLocalStorage();
             
             taskDialog.close();
             form.reset();
@@ -153,6 +160,9 @@ export function createNewProject(){
             event.preventDefault();
             
             projects.push(createProject(projectTitle, projectDescription));
+
+            //Store the project modifications in local storage
+            storeInLocalStorage();
             
             form.reset();
             taskDialog.close();
