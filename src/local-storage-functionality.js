@@ -1,5 +1,5 @@
-import {projects} from "./index.js";
-import {createProject} from "./createToDo.js";
+import { projects } from "./index.js";
+import { createProject } from "./createToDo.js";
 
 //Test if storage is available or supported
 export function storageAvailable(type) {
@@ -23,35 +23,32 @@ export function storageAvailable(type) {
 
 //With this function i will store the projects in the local storage, i will create a new array
 //in which i will store each element inside projects and then i will stringify it.
-export function storeInLocalStorage(){
-
+export function storeInLocalStorage() {
   const projectArray = [];
 
-  projects.forEach((element)=>{
+  projects.forEach((element) => {
     projectArray.push(element);
   });
 
-  let projectsArrayString = JSON.stringify(projectArray) 
+  let projectsArrayString = JSON.stringify(projectArray);
   localStorage.setItem("__projectsArray", projectsArrayString);
-
 }
 
-//With this function, i will load the data that was stored in the local storage. Initially i will create the project objects with 
+//With this function, i will load the data that was stored in the local storage. Initially i will create the project objects with
 //their correct class and within each project i will add the task objects withe the correct class.
-export function loadDataOfLocalStorage(){
-  const savedProjects = JSON.parse(localStorage.getItem('__projectsArray'));
+export function loadDataOfLocalStorage() {
+  const savedProjects = JSON.parse(localStorage.getItem("__projectsArray"));
 
-  savedProjects.forEach((project,index)=>{
+  savedProjects.forEach((project, index) => {
     let title = project.title;
     let description = project.description;
     let tasks = project.tasks;
 
-    projects.push(createProject(title,description));
+    projects.push(createProject(title, description));
 
-    tasks.forEach((task)=>{
+    tasks.forEach((task,i) => {
       projects[index].addTask(task);
+      projects[index].tasks[i].status = task.status;
     });
-
   });
-
 }

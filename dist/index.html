@@ -1,98 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Everyday List</title>
-<script defer src="main.js"></script></head>
-<body>
-
+  <script defer src="main.js"></script></head>
+  <body>
     <div class="container">
+      <div class="dashboard">
+        <button id="tasks">Tasks</button>
+        <button id="projects">Projects</button>
+      </div>
 
-        <div class="dashboard">
-            <button id="tasks">Tasks</button>
-            <button id="projects">Projects</button>
-        </div>
-
-        <!-- These next two elements are my dialogs that will appear when i press on the add task and add project button -->
-        <dialog class="task-dialog">
-            <div class="task-dialog-container">
-                <div class="task-form-container">
-                    <form>
-                        <h3>ADD TASK</h3>
-                        <ul>
-                            <!-- <li>
+      <!-- These next two elements are my dialogs that will appear when i press on the add task and add project button -->
+      <dialog class="task-dialog">
+        <div class="task-dialog-container">
+          <div class="task-form-container">
+            <form>
+              <h3>ADD TASK</h3>
+              <ul>
+                <!-- <li>
                                 <h3>ADD TASK</h3>
                             </li> -->
-                            <li>
-                                <label for="title">Title:</label>
-                                <input type="text" id="title" required>
-                            </li>
-                            <!-- <li>
+                <li>
+                  <label for="title">Title:</label>
+                  <input type="text" id="title" required />
+                </li>
+                <!-- <li>
                                 <label for="description">Description:</label>
                                 <input type="text" id="description" required>
                             </li> -->
-                            <li>
-                                <label for="description">Description:</label>
-                                <textarea id="description" name="description" rows="4" required></textarea>
-                            </li>
-                            <li>
-                                <label for="dueDate">Due date:</label>
-                                <input type="date" id="dueDate" required>
-                            </li>
-                            <li class="priority">
-                                <h4>Choose Priority Level:</h4>
-                                <label>
-                                    <input type="radio" name="priority" value="Low"> Low
-                                </label>
-                                <label>
-                                    <input type="radio" name="priority" value="Medium"> Medium
-                                </label>
-                                <label>
-                                    <input type="radio" name="priority" value="High"> High
-                                </label>
-                                
-                            </li>
-                        </ul>
-                    </form>
-                </div>
-                <button class="task-confirm-dialog">Confirm</button>
-                <button class="task-close-dialog">Cancel</button>
-            </div>
-        </dialog>
+                <li>
+                  <label for="description">Description:</label>
+                  <textarea
+                    id="description"
+                    name="description"
+                    rows="4"
+                    required
+                  ></textarea>
+                </li>
+                <li>
+                  <label for="dueDate">Due date:</label>
+                  <input type="date" id="dueDate" required />
+                </li>
+                <li class="priority">
+                  <h4>Choose Priority Level:</h4>
+                  <label>
+                    <input type="radio" name="priority" value="Low" /> Low
+                  </label>
+                  <label>
+                    <input type="radio" name="priority" value="Medium" /> Medium
+                  </label>
+                  <label>
+                    <input type="radio" name="priority" value="High" /> High
+                  </label>
+                </li>
+              </ul>
+            </form>
+          </div>
+          <button class="task-confirm-dialog">Confirm</button>
+          <button class="task-close-dialog">Cancel</button>
+        </div>
+      </dialog>
 
-        <dialog class="project-dialog">
-            <div class="project-dialog-container">
-                <div class="project-form-container">
-                    <form>
-                        <h3>ADD PROJECT</h3>
-                        <ul>
-                            <!-- <li>
+      <dialog class="project-dialog">
+        <div class="project-dialog-container">
+          <div class="project-form-container">
+            <form>
+              <h3>ADD PROJECT</h3>
+              <ul>
+                <!-- <li>
                                 <h3>ADD PROJECT</h3>
                             </li> -->
-                            <li>
-                                <label for="title">Title:</label>
-                                <input type="text" id="title" required>
-                            </li>
-                            <!-- <li>
+                <li>
+                  <label for="title">Title:</label>
+                  <input type="text" id="title" required />
+                </li>
+                <!-- <li>
                                 <label for="description">Description:</label>
                                 <input type="text"id="description" required>
                             </li> -->
-                            <li>
-                                <label for="description">Description:</label>
-                                <textarea id="description" name="description" rows="4" required></textarea>
-                            </li>
-                        </ul>
-                    </form>
-                </div>
-                <button class="project-confirm-dialog">Confirm</button>
-                <button class="project-close-dialog">Cancel</button>
-            </div>
-        </dialog>
+                <li>
+                  <label for="description">Description:</label>
+                  <textarea
+                    id="description"
+                    name="description"
+                    rows="4"
+                    required
+                  ></textarea>
+                </li>
+              </ul>
+            </form>
+          </div>
+          <button class="project-confirm-dialog">Confirm</button>
+          <button class="project-close-dialog">Cancel</button>
+        </div>
+      </dialog>
 
-        <div id="header"></div>
-        <div class="main"></div>
+      <div id="header"></div>
+      <div class="main"></div>
     </div>
-    
-</body>
+  </body>
 </html>

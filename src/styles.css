@@ -1,322 +1,335 @@
-*:not(dialog){
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
+*:not(dialog) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
 }
-li{
-    list-style: none;
-    padding:5px;
+li {
+  list-style: none;
+  padding: 5px;
 }
-li:not(.priority){
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    padding:5px;
+li:not(.priority) {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
 }
 ::backdrop {
-    background-image: linear-gradient(
-      40deg,
-      rgb(187, 45, 2),
-      rgb(117, 119, 0),
-      rgb(0, 0, 0)
-    );
-    opacity: 0.9;
+  background-image: linear-gradient(
+    40deg,
+    rgb(187, 45, 2),
+    rgb(117, 119, 0),
+    rgb(0, 0, 0)
+  );
+  opacity: 0.9;
 }
-dialog{   
-    height:65%;
-    width: 400px;
-    padding: 0px;
-    border-radius: 10px;
-    border: 2px solid grey; 
+dialog {
+  height: 65%;
+  width: 400px;
+  padding: 0px;
+  border-radius: 10px;
+  border: 2px solid grey;
 }
-.task-close-dialog, .project-close-dialog{
-    width: 100%;
-    background-color: red;  
-    padding: 10px;
-    font-size: large;
-    color:white ;
-    border:none;
+.task-close-dialog,
+.project-close-dialog {
+  width: 100%;
+  background-color: red;
+  padding: 10px;
+  font-size: large;
+  color: white;
+  border: none;
 }
-.task-close-dialog:hover, .project-close-dialog:hover{
-    background-color:rgb(165, 0, 0);
+.task-close-dialog:hover,
+.project-close-dialog:hover {
+  background-color: rgb(165, 0, 0);
 }
-.task-close-dialog:active, .project-close-dialog:active{
-    color: black;
+.task-close-dialog:active,
+.project-close-dialog:active {
+  color: black;
 }
-.task-confirm-dialog, .project-confirm-dialog{
-    width: 100%;
-    background-color: rgb(32, 160, 1);  
-    padding: 10px;
-    margin-top:20px;
-    font-size: large;
-    color:white ;
-    border:none;
+.task-confirm-dialog,
+.project-confirm-dialog {
+  width: 100%;
+  background-color: rgb(32, 160, 1);
+  padding: 10px;
+  margin-top: 20px;
+  font-size: large;
+  color: white;
+  border: none;
 }
-.task-confirm-dialog:active, .project-confirm-dialog:active{
-    color: black;
+.task-confirm-dialog:active,
+.project-confirm-dialog:active {
+  color: black;
 }
-.task-confirm-dialog:hover, .project-confirm-dialog:hover{
-    background-color:rgb(1, 78, 5);
+.task-confirm-dialog:hover,
+.project-confirm-dialog:hover {
+  background-color: rgb(1, 78, 5);
 }
-.task-dialog-container, .project-dialog-container{
-    height:100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;    
+.task-dialog-container,
+.project-dialog-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.task-form-container, .project-form-container{
-    width: 100%;
-    height: 100%;
-    padding: 20px 0 0 20px;
-    flex:1;
-    display:flex;
-    align-items: center;
-    font-size: 3vh;
+.task-form-container,
+.project-form-container {
+  width: 100%;
+  height: 100%;
+  padding: 20px 0 0 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-size: 3vh;
 }
-form{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-form ul{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+form ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-form ul li{
-    flex: 1;
+form ul li {
+  flex: 1;
 }
-input{
-    border-radius: 3px;
-    padding-left:5px;
-    border: #E5E7EB 1px;
-    background-color: rgb(247, 247, 247);
-    font-size: 3vh;
+input {
+  border-radius: 3px;
+  padding-left: 5px;
+  border: #e5e7eb 1px;
+  background-color: rgb(247, 247, 247);
+  font-size: 3vh;
 }
-textarea{
-    border-radius: 3px;
-    padding-left:5px;
-    border: #E5E7EB 1px;
-    background-color: rgb(247, 247, 247);
-    font-size: 3vh;
+textarea {
+  border-radius: 3px;
+  padding-left: 5px;
+  border: #e5e7eb 1px;
+  background-color: rgb(247, 247, 247);
+  font-size: 3vh;
 }
-textarea:invalid{
-    background-color: rgb(245, 205, 205);
+textarea:invalid {
+  background-color: rgb(245, 205, 205);
 }
-select{
-    font-size: 3vh;
-    text-align: center;
-    width: auto;
-    border-radius: 3px;
-    border: #E5E7EB 1px;
-    background-color: rgb(247, 247, 247);
+select {
+  font-size: 3vh;
+  text-align: center;
+  width: auto;
+  border-radius: 3px;
+  border: #e5e7eb 1px;
+  background-color: rgb(247, 247, 247);
 }
-input:invalid{
-    background-color: rgb(245, 205, 205);
+input:invalid {
+  background-color: rgb(245, 205, 205);
 }
-.body{
-    height:100vh;
+.body {
+  height: 100vh;
 }
-.container{
-    display: grid;
-    height: 100vh;
-    grid-template-columns: 250px 4fr;
-    grid-template-rows: 80px 1fr;
-}
-
-button{
-    padding: 5px 20px;
-    border: none;
-    background-color: transparent;
-}
-#header{
-    background-color: red;
-    opacity: 0.9;
-    border-bottom: 1px solid black;
-    padding-top: 10px;
-    grid-column: 2/3;
-    text-align: center;
-    font-size: x-large;
-}
-.header-div{
-    display: flex;
-    align-items: center;
-}
-.header-title{
-    flex:1;
-}
-.header-back{
-    margin-left: 30px;
-    font-size: 6vh;
-    padding: 5px;
-    border-radius: 50%;
-    text-align: center;
-}
-.header-back:hover{
-    color: lightskyblue;
-}
-.main{
-    background-image: url('./Material-Wood-Scandinavian-House-Oak-1.jpg');
-    opacity: 1;
-    grid-column: 2/3;
-    grid-row: 2/3;
-    padding: 50px;
-    /* border: 1px solid black; */
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
-    grid-template-rows: repeat(4,minmax(100px,1fr));
-    grid-auto-rows: 100px;
-    gap: 10px;
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 250px 4fr;
+  grid-template-rows: 80px 1fr;
 }
 
-.grid-element{
-    padding: 10px 5px;
-    border: 3px solid black;
-    border-radius: 20px;
-    display: flex;
-    justify-content:space-between;
-    text-align: center;
-    flex-direction: column;
-    gap:10px;
+button {
+  padding: 5px 20px;
+  border: none;
+  background-color: transparent;
 }
-.longer-grid-element{
-    grid-column: span 2;
+#header {
+  background-color: red;
+  opacity: 0.9;
+  border-bottom: 1px solid black;
+  padding-top: 10px;
+  grid-column: 2/3;
+  text-align: center;
+  font-size: x-large;
 }
-.task-footer{
-    padding: 0 5px;
-    display: flex;
-    font-size: large;
-    justify-content: space-between;
-    align-items: center;
+.header-div {
+  display: flex;
+  align-items: center;
 }
-.task-header, .project-header{
-    padding: 0 5px;
-    word-wrap: break-word;
-    word-break: break-word; 
-    display: flex;
-    font-size: large;
-    gap: 20px;
-    justify-content: space-around;
-    align-items: center;
+.header-title {
+  flex: 1;
+}
+.header-back {
+  margin-left: 30px;
+  font-size: 6vh;
+  padding: 5px;
+  border-radius: 50%;
+  text-align: center;
+}
+.header-back:hover {
+  color: lightskyblue;
+}
+.main {
+  background-image: url("./Material-Wood-Scandinavian-House-Oak-1.jpg");
+  opacity: 1;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  padding: 50px;
+  /* border: 1px solid black; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: repeat(4, minmax(100px, 1fr));
+  grid-auto-rows: 100px;
+  gap: 10px;
 }
 
-.middle-buttons{
-    width: 100%;
-    display: flex;
-    gap:10px;
+.grid-element {
+  padding: 10px 5px;
+  border: 3px solid black;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.longer-grid-element {
+  grid-column: span 2;
+}
+.task-footer {
+  padding: 0 5px;
+  display: flex;
+  font-size: large;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-header,
+.project-header {
+  padding: 0 5px;
+  word-wrap: break-word;
+  word-break: break-word;
+  display: flex;
+  font-size: large;
+  gap: 20px;
+  justify-content: space-around;
+  align-items: center;
+}
 
+.middle-buttons {
+  width: 100%;
+  display: flex;
+  gap: 10px;
 }
-.delete-task,.delete-project{
-    flex:1;
-    font-size: 2vh;
-    padding: 2px;
-    font-weight: bold;
-    border:none;
-    border-radius: 10px;
-    background-color: rgb(184, 37, 37);
-    color:white;
+.delete-task,
+.delete-project {
+  flex: 1;
+  font-size: 2vh;
+  padding: 2px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(184, 37, 37);
+  color: white;
 }
-.delete-task:hover,.delete-project:hover{
-    border: 1px solid black;
-    color: black;
+.delete-task:hover,
+.delete-project:hover {
+  border: 1px solid black;
+  color: black;
 }
-.descriptionTask, .descriptionProject{
-    font-size: 1.8vh;
-    padding: 5px 0;
+.descriptionTask,
+.descriptionProject {
+  font-size: 1.8vh;
+  padding: 5px 0;
 }
-.edit-task{
-    padding: 2px 20px;
-    font-size: 2vh;
-    border:none;
-    font-weight: bold;
-    border-radius: 10px;
-    background-color: rgb(77, 72, 72);
-    color:white;
+.edit-task {
+  padding: 2px 20px;
+  font-size: 2vh;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: rgb(77, 72, 72);
+  color: white;
 }
-.edit-task:hover{
-    border: 1px solid black;
-    color: black;
+.edit-task:hover {
+  border: 1px solid black;
+  color: black;
 }
-.task-details,.project-details{
-    padding: 0;
-    margin: 0;
-    font-size: xx-large;
-    cursor: pointer;
+.task-details,
+.project-details {
+  padding: 0;
+  margin: 0;
+  font-size: xx-large;
+  cursor: pointer;
 }
-.project-header{
-    margin-top:50px;
-    font-size:5vh;
-    flex:1;
-    cursor:pointer;
+.project-header {
+  margin-top: 50px;
+  font-size: 5vh;
+  flex: 1;
+  cursor: pointer;
 }
-.project-header:hover{
-    color:lightskyblue;
+.project-header:hover {
+  color: lightskyblue;
 }
-.project-details{
-    padding-right:  0;
-    padding-left: 80%;
+.project-details {
+  padding-right: 0;
+  padding-left: 80%;
 }
-.complete-task{
-    padding:10px;
-    font-size: xx;
-    margin:0;
-    cursor: pointer;
-    border: 2px solid black;
-    border-radius: 12px;
+.complete-task {
+  padding: 10px;
+  font-size: xx;
+  margin: 0;
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 12px;
 }
-.black{
-    background-color: black;
+.black {
+  background-color: black;
 }
-.complete-task:hover{
-    border-color: rgb(81, 172, 202);
+.complete-task:hover {
+  border-color: rgb(81, 172, 202);
 }
-.task-details:hover{
-    color:#E5E7EB;
+.task-details:hover {
+  color: #e5e7eb;
 }
-.add-button{
-    display: block;
-    border-radius: 20px;
-    width: 105%;
-    height:150%;
-    font-weight: bold;
-    font-size:5vh;
-    cursor: pointer;
+.add-button {
+  display: block;
+  border-radius: 20px;
+  width: 105%;
+  height: 150%;
+  font-weight: bold;
+  font-size: 5vh;
+  cursor: pointer;
 }
-.add-button:hover{
-    font-size: 6vh;
-    font-weight: bolder;
+.add-button:hover {
+  font-size: 6vh;
+  font-weight: bolder;
 }
 
 /* testing */
-#tasks:hover{
-    font-size:xx-large;
-    font-weight:bold;
+#tasks:hover {
+  font-size: xx-large;
+  font-weight: bold;
 }
 
-#projects:hover{
-    font-size:xx-large;
-    font-weight:bold;
+#projects:hover {
+  font-size: xx-large;
+  font-weight: bold;
 }
 
-#projects, #tasks{
-    padding: 30px 0;
-    font-size:x-large;
-    font-weight:bold;
-    opacity: 0.7;
+#projects,
+#tasks {
+  padding: 30px 0;
+  font-size: x-large;
+  font-weight: bold;
+  opacity: 0.7;
 }
 
-.dashboard{
-    background-image: url('./wood-2045379_640.jpg');
-    grid-column: 1/2;
-    grid-row: 1/3;
-    display: flex;
-    flex-direction: column;
-    gap:100px;
-    justify-content: flex-start;
-    align-items: stretch;
-    padding-top: 200px;
-    border-right: 4px double black;
+.dashboard {
+  background-image: url("./wood-2045379_640.jpg");
+  grid-column: 1/2;
+  grid-row: 1/3;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding-top: 200px;
+  border-right: 4px double black;
 }
